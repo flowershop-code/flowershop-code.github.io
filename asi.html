@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="estilo.css">
+    <script src="app.js" async></script>
+    <title>FlowerShop | </title>
+    <style>
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #factura {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FlowerShop</h1>
+    </header>
+    <section class="contenedor">
+        <!-- Contenedor de elementos -->
+        <div class="contenedor-items">
+            <div class="item">
+                <span class="titulo-item">Ramo Rosas Rosadas</span>
+                <img src="img/rosa 1.png" alt="" class="img-item">
+                <span class="precio-item">$110.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Rosas Rojas</span>
+                <img src="img/rosa 2.png" alt="" class="img-item">
+                <span class="precio-item">$110.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Girasoles</span>
+                <img src="img/girasoles.png" alt="" class="img-item">
+                <span class="precio-item">$85.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Tulipanes</span>
+                <img src="img/tulipanes.png" alt="" class="img-item">
+                <span class="precio-item">$150.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Mixto</span>
+                <img src="img/mixtas.png" alt="" class="img-item">
+                <span class="precio-item">$180.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Flores Eternas</span>
+                <img src="img/eternas 3.png" alt="" class="img-item">
+                <span class="precio-item">$100.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Flores Eternas</span>
+                <img src="img/ramo rosadas eternas.png" alt="" class="img-item">
+                <span class="precio-item">$210.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Flores Eternas</span>
+                <img src="img/ramo rosadas eternas.png" alt="" class="img-item">
+                <span class="precio-item">$210.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Flores Eternas</span>
+                <img src="img/ramo rosadas eternas.png" alt="" class="img-item">
+                <span class="precio-item">$210.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Flores Eternas</span>
+                <img src="img/ramo rosadas eternas.png" alt="" class="img-item">
+                <span class="precio-item">$210.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Flores Eternas</span>
+                <img src="img/ramo rosadas eternas.png" alt="" class="img-item">
+                <span class="precio-item">$210.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Ramo Flores Eternas</span>
+                <img src="img/ramo rosadas eternas.png" alt="" class="img-item">
+                <span class="precio-item">$210.000</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+        </div>
+        <!-- Carrito de Compras -->
+        <div class="carrito" id="carrito">
+            <div class="header-carrito">
+                <h2>Tu Carrito</h2>
+            </div>
+
+            <div class="carrito-items"></div>
+            <div class="carrito-total">
+                <div class="fila">
+                    <strong>Tu Total</strong>
+                    <span class="carrito-precio-total">$0</span>
+                </div>
+                <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para la factura -->
+    <div id="facturaModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="factura"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToCartButtons = document.querySelectorAll('.boton-item');
+            const cartItemsContainer = document.querySelector('.carrito-items');
+            const cartTotalPriceElement = document.querySelector('.carrito-precio-total');
+            const payButton = document.querySelector('.btn-pagar');
+            const modal = document.getElementById("facturaModal");
+            const span = document.getElementsByClassName("close")[0];
+
+            let cart = [];
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', addToCart);
+            });
+
+            payButton.addEventListener('click', generarFactura);
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            function addToCart(event) {
+                const button = event.target;
+                const item = button.closest('.item');
+                const title = item.querySelector('.titulo-item').textContent;
+                const price = parseFloat(item.querySelector('.precio-item').textContent.replace('$', '').replace('.', ''));
+                const imageSrc = item.querySelector('.img-item').src;
+
+                const cartItem = {
+                    title,
+                    price,
+                    imageSrc,
+                    quantity: 1
+                };
+
+                const existingItem = cart.find(cartItem => cartItem.title === title);
+
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push(cartItem);
+                }
+
+                updateCart();
+            }
+
+            function updateCart() {
+                cartItemsContainer.innerHTML = '';
+
+                let total = 0;
+
+                cart.forEach(item => {
+                    const cartRow = document.createElement('div');
+                    cartRow.classList.add('carrito-item');
+                    const itemTotalPrice = item.price * item.quantity;
+
+                    total += itemTotalPrice;
+
+                    cartRow.innerHTML = `
+                        <img src="${item.imageSrc}" width="80px" alt="">
+                        <div class="carrito-item-detalles">
+                            <span class="carrito-item-titulo">${item.title}</span>
+                            <div class="selector-cantidad">
+                                <i class="fa-solid fa-minus restar-cantidad" data-title="${item.title}"></i>
+                                <input type="text" value="${item.quantity}" class="carrito-item-cantidad" disabled>
+                                <i class="fa-solid fa-plus sumar-cantidad" data-title="${item.title}"></i>
+                            </div>
+                            <span class="carrito-item-precio">$${itemTotalPrice.toLocaleString('es-ES')}</span>
+                        </div>
+                        <button class="btn-eliminar" data-title="${item.title}">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    `;
+
+                    cartItemsContainer.append(cartRow);
+
+                    cartRow.querySelector('.restar-cantidad').addEventListener('click', decreaseQuantity);
+                    cartRow.querySelector('.sumar-cantidad').addEventListener('click', increaseQuantity);
+                    cartRow.querySelector('.btn-eliminar').addEventListener('click', removeItem);
+                });
+
+                cartTotalPriceElement.textContent = `$${total.toLocaleString('es-ES')}`;
+            }
+
+            function decreaseQuantity(event) {
+                const title = event.target.getAttribute('data-title');
+                const cartItem = cart.find(item => item.title === title);
+
+                if (cartItem.quantity > 1) {
+                    cartItem.quantity -= 1;
+                } else {
+                    cart = cart.filter(item => item.title !== title);
+                }
+
+                updateCart();
+            }
+
+            function increaseQuantity(event) {
+                const title = event.target.getAttribute('data-title');
+                const cartItem = cart.find(item => item.title === title);
+
+                cartItem.quantity += 1;
+
+                updateCart();
+            }
+
+            function removeItem(event) {
+                const title = event.target.getAttribute('data-title');
+                cart = cart.filter(item => item.title !== title);
+
+                updateCart();
+            }
+
+            function generarFactura() {
+                const idCliente = prompt('Ingrese Identificación del Cliente');
+                const nombreCliente = prompt('Ingrese Nombre del Cliente');
+                const direccionCliente = prompt('Ingrese Dirección del Cliente');
+                const telefonoCliente = prompt('Ingrese Teléfono del Cliente');
+
+                let facturaHTML = `
+                    Fecha: ${new Date().toLocaleDateString()}<br><br>
+                    Identificación del Cliente: ${idCliente}<br><br>
+                    Nombre del Cliente: ${nombreCliente}<br><br>
+                    Dirección: ${direccionCliente}<br><br>
+                    Teléfono: ${telefonoCliente}<br><br><br>
+                `;
+
+                let subtotalP = 0;
+
+                cart.forEach(item => {
+                    const itemTotalPrice = item.price * item.quantity;
+                    subtotalP += itemTotalPrice;
+
+                    facturaHTML += `
+                        Nombre Producto: ${item.title}&nbsp;&nbsp;
+                        Precio: ${item.price}&nbsp;&nbsp;
+                        Cantidad: ${item.quantity}&nbsp;&nbsp;
+                        SubTotal: ${itemTotalPrice.toLocaleString('es-ES')}<br><br><br>
+                    `;
+                });
+
+                const iva = subtotalP * 0.19;
+                const total = subtotalP + iva;
+
+                facturaHTML += `
+                    Subtotal: ${subtotalP.toLocaleString('es-ES')}<br><br>
+                    IVA 19%: ${iva.toLocaleString('es-ES')}<br><br>
+                    Total: ${total.toLocaleString('es-ES')}<br><br>
+                    <button onclick="window.print()">Imprimir Factura</button>
+                `;
+
+                const facturaDiv = document.getElementById('factura');
+                facturaDiv.innerHTML = facturaHTML;
+                modal.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
