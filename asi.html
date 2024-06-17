@@ -276,14 +276,14 @@
             }
 
             function generarFactura() {
-                const idCliente = prompt('Ingrese Identificación del Cliente');
+                const idCliente = prompt('Ingrese Numero de Tarjeta');
                 const nombreCliente = prompt('Ingrese Nombre del Cliente');
                 const direccionCliente = prompt('Ingrese Dirección del Cliente');
                 const telefonoCliente = prompt('Ingrese Teléfono del Cliente');
 
                 let facturaHTML = `
                     Fecha: ${new Date().toLocaleDateString()}<br><br>
-                    Identificación del Cliente: ${idCliente}<br><br>
+                    Numero de Tarjeta: ${idCliente}<br><br>
                     Nombre del Cliente: ${nombreCliente}<br><br>
                     Dirección: ${direccionCliente}<br><br>
                     Teléfono: ${telefonoCliente}<br><br><br>
